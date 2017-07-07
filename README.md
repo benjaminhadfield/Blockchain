@@ -30,11 +30,13 @@ blockchain.add_blocks(b1, b2)
 print(b1.hash)      # ffff7a8e7cf6e5b867967aa22f729823271d161f499b8d974f067844e1ad5754
 print(b1.prev_hash) # None
 print(b1.data)      # {'from': 'Amy', 'to': 'Parker', 'value': '100'}
+print(b1.nonce)     # 16650
 print(b1.is_valid)  # True
 
 print(b2.hash)      # ffff81217d9b741edcdffa31d9c7c62d3b1e175901905cedba4a68e5321a9037
 print(b2.prev_hash) # ffff7a8e7cf6e5b867967aa22f729823271d161f499b8d974f067844e1ad5754
 print(b2.data)      # data data data
+print(b2.nonce)     # 2044
 print(b2.is_valid)  # True
 
 
@@ -46,5 +48,6 @@ print(b1.is_valid)  # False
 # We can mine a block to make it valid again
 b1.mine()
 print(b1.is_valid)  # True
+print(b1.nonce)     # 8139
 
 ```
