@@ -10,15 +10,19 @@ class Blockchain:
         # blocks stored as a dict for faster lookup
         self.blocks = {}
 
-    def add_block(self, block):
-        if isinstance(block, list):
-            for b in block:
+    def add_block(self, *blocks):
+        if len(blocks) > 1:
+            for b in blocks:
                 self.add_block(b)
+        else:
+            block = blocks[0]
+            if self.blocks.get(block.hash) is not None:
+                raise AssertionError(
+                    'specified block already exists on the blockchain.')
 
-        if self.blocks.get(block.hash) is not None:
-            raise AssertionError(
-                '{} already exists on the blockchain.'.format(block.__str__()))
-        self.blocks[block.hash] = block
+            # assign the block to the blockchain
+
+            self.blocks[block.hash] = block
 
     def __len__(self):
         return len(self.blocks)

@@ -10,4 +10,5 @@ if __name__ == '__main__':
 
     bc.add_block(block2)
 
+    print(bc.__contains__(block1))
     print(bc.__contains__(block2))
