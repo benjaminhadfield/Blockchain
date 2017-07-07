@@ -16,9 +16,14 @@ class Blockchain:
         self.latest_hash = None
 
     def add_blocks(self, *blocks):
+        """
+        Takes a block, or multiple blocks, and adds them to the blockchain.
+        The function takes care of setting the correct prev_hashes on the
+        blocks.
+        """
         if len(blocks) > 1:
             for b in blocks:
-                self.add_block(b)
+                self.add_blocks(b)
         else:
             block = blocks[0]
 

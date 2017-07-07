@@ -6,7 +6,7 @@ if __name__ == '__main__':
     bc = Blockchain()
 
     block1 = Block('Data :)')
-    block2 = Block('More data :)')
+    block2 = Block({'foo': 'bar'})
 
     bc.add_blocks(block1, block2)
 
