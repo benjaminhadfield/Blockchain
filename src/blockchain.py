@@ -16,12 +16,16 @@ class Blockchain:
                 self.add_block(b)
         else:
             block = blocks[0]
+
+            # check input
+            if not isinstance(block, Block):
+                raise TypeError(
+                    '\'{}\' is not an instance of Block.'.format(block))
             if self.blocks.get(block.hash) is not None:
                 raise AssertionError(
                     'specified block already exists on the blockchain.')
 
             # assign the block to the blockchain
-
             self.blocks[block.hash] = block
 
     def __len__(self):
