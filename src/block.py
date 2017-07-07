@@ -38,13 +38,13 @@ class Block:
     def to_bytes(value):
         return str(value).encode()
 
-    def is_block_valid(self):
+    def is_valid(self):
         prefix = 'f000'
         return self.hash[:len(prefix)] == prefix
 
     def mine(self):
         """Loop through nonce values until the block becomes valid."""
-        while not self.is_block_valid():
+        while not self.is_valid():
             self.nonce += 1
 
     def print_self(self):
@@ -55,7 +55,7 @@ class Block:
             'data \t{}'.format(self.data),
             'prev \t{}'.format(self.prev_hash),
             'hash \t{}'.format(self.hash),
-            'valid \t{}'.format(self.is_block_valid()),
+            'valid \t{}'.format(self.is_valid()),
             '',
             sep='\n'
         )
