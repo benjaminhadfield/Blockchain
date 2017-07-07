@@ -21,7 +21,7 @@ from src/blockchain import Blockchain
 blockchain = Blockchain()
 
 # Create a couple of blocks containing data
-b1 = Block({'from': 'Amy', 'to': 'Parker', 'value': '100'})
+b1 = Block({'from': 'Jas', 'to': 'Alex', 'amount': '100'})
 b2 = Block('data data data')
 
 # Add the blocks to the blockchain
@@ -43,7 +43,7 @@ b1.data = 'New data 👾'
 print(b1.is_valid)  # False
 
 
-# We can mine a block to make is valid again
+# We can mine a block to make it valid again
 b1.mine()
 print(b1.is_valid)  # True
 
