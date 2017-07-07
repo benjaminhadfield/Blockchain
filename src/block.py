@@ -47,6 +47,3 @@ class Block:
             '',
             sep='\n'
         )
-
-    def __str__(self):
-        return self.hash
