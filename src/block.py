@@ -9,7 +9,7 @@ import hashlib
 class Block:
     _count = 0
 
-    def __init__(self, data, prev_hash, nonce=0):
+    def __init__(self, data, prev_hash, nonce=None):
         self.index = Block.get_index()
         self.timestamp = time.time()
         self.nonce = nonce
