@@ -8,7 +8,7 @@ if __name__ == '__main__':
     block1 = Block('Data :)')
     block2 = Block('More data :)')
 
-    bc.add_block(block1, block2)
+    bc.add_blocks(block1, block2)
 
     block1.print_self()
     block2.print_self()

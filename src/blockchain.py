@@ -15,7 +15,7 @@ class Blockchain:
         self.blocks = {}
         self.latest_hash = None
 
-    def add_block(self, *blocks):
+    def add_blocks(self, *blocks):
         if len(blocks) > 1:
             for b in blocks:
                 self.add_block(b)
@@ -25,7 +25,7 @@ class Blockchain:
             # check input
             if not isinstance(block, Block):
                 raise TypeError(
-                    '\'{}\' is not an instance of Block.'.format(block))
+                    '\'{}\' is not an instance of block.'.format(block))
             if self.blocks.get(block.hash) is not None:
                 raise AssertionError(
                     'specified block already exists on the blockchain.')
