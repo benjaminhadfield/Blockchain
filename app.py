@@ -10,4 +10,4 @@ if __name__ == '__main__':
 
     bc.add_block(block2)
 
-    print(bc.__getitem__(block2.hash))
+    print(bc.__contains__(block2))

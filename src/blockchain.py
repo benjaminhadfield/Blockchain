@@ -31,4 +31,4 @@ class Blockchain:
     def __contains__(self, item):
         if not isinstance(item, Block):
             raise TypeError()
-        return bool(self.blocks.get(item.hash))
+        return bool(self.__getitem__(item.hash))
