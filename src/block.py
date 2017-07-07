@@ -9,13 +9,23 @@ import hashlib
 class Block:
     _count = 0
 
-    def __init__(self, data, prev_hash, nonce=None):
+    def __init__(self, data):
         self.index = Block.get_index()
         self.timestamp = time.time()
-        self.nonce = nonce
+        self.nonce = 0
         self.data = data
-        self.hash = self._get_hash()
-        self.prev_hash = prev_hash
+        self.prev_hash = None
+
+        self.mine()
+
+    @property
+    def hash(self):
+        h = hashlib.sha256()
+        h.update(self.to_bytes(self.index))
+        h.update(self.to_bytes(self.timestamp))
+        h.update(self.to_bytes(self.nonce))
+        h.update(self.to_bytes(self.data))
+        return h.hexdigest()
 
     @staticmethod
     def get_index():
@@ -28,13 +38,14 @@ class Block:
     def to_bytes(value):
         return str(value).encode()
 
-    def _get_hash(self):
-        h = hashlib.sha256()
-        h.update(self.to_bytes(self.index))
-        h.update(self.to_bytes(self.timestamp))
-        h.update(self.to_bytes(self.nonce))
-        h.update(self.to_bytes(self.data))
-        return h.hexdigest()
+    def is_block_valid(self):
+        prefix = 'f000'
+        return self.hash[:len(prefix)] == prefix
+
+    def mine(self):
+        """Loop through nonce values until the block becomes valid."""
+        while not self.is_block_valid():
+            self.nonce += 1
 
     def print_self(self):
         print(
@@ -44,6 +55,7 @@ class Block:
             'data \t{}'.format(self.data),
             'prev \t{}'.format(self.prev_hash),
             'hash \t{}'.format(self.hash),
+            'valid \t{}'.format(self.is_block_valid()),
             '',
             sep='\n'
         )
