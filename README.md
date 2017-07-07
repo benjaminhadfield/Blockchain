@@ -47,7 +47,7 @@ print(b1.is_valid)  # False
 
 # We can mine a block to make it valid again
 b1.mine()
-print(b1.is_valid)  # True
 print(b1.nonce)     # 8139
+print(b1.is_valid)  # True
 
 ```
