@@ -43,6 +43,9 @@ class Blockchain:
             self.blocks[block.hash] = block
             self.latest_hash = block.hash
 
+            # in a production blockchain, we would also broadcast the new block
+            # to other nodes in the distributed system at this point
+
     def __len__(self):
         return len(self.blocks)
 

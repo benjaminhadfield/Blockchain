@@ -39,7 +39,9 @@ class Block:
         return str(value).encode()
 
     def is_valid(self):
-        prefix = '00000'
+        # in production the prefix would be much longer
+        # (e.g. computation times: Bitcoin: ~10m, Etherium: ~15s)
+        prefix = '0000'
         return self.hash[:len(prefix)] == prefix
 
     def mine(self):
