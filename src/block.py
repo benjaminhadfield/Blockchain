@@ -12,7 +12,7 @@ class Block:
     def __init__(self, data):
         self.index = Block.get_index()
         self.timestamp = time.time()
-        self.nonce = 0
+        self.nonce = 0  # this is the proof of work
         self.data = data
         self.prev_hash = None
 
@@ -39,7 +39,7 @@ class Block:
         return str(value).encode()
 
     def is_valid(self):
-        prefix = 'f000'
+        prefix = '00000'
         return self.hash[:len(prefix)] == prefix
 
     def mine(self):
