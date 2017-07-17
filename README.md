@@ -1,6 +1,6 @@
 # Blockchain
 
-A simple implementation of the blockchain ⛓
+**A simple implementation of a blockchain ⛓**
 
 The blocks are signed by checking that the hash of the block starts with a specific sequence.
 For example, we might state that blocks starting with `0000` are considered to be signed blocks.
